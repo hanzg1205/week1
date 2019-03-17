@@ -33,4 +33,17 @@ gulp.task('webserver', () => {
             }]
         }))
 })
-gulp.task('default', gulp.parallel('watch', 'webserver', 'js'))
+gulp.task('default', gulp.parallel('watch', 'webserver', 'js'));
+gulp.task('buildJs', () => {
+    return gulp.src('./src/js/*.js')
+        .pipe(gulp.dest('./dist/js'))
+})
+gulp.task('buildCss', () => {
+    return gulp.src('./src/css/*.css')
+        .pipe(gulp.dest('./dist/css'))
+})
+gulp.task('buildHtml', () => {
+    return gulp.src('./src/*.html')
+        .pipe(gulp.dest('./dist'))
+})
+gulp.task('build', gulp.series('buildJs', 'buildCss', 'buildHtml'))
