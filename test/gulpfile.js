@@ -33,4 +33,4 @@ gulp.task('webserver', () => {
             }]
         }))
 })
-gulp.task('dev', gulp.parallel('watch', 'webserver'))
+gulp.task('default', gulp.parallel('watch', 'webserver', 'js'))
